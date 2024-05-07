@@ -28,4 +28,5 @@ dependencyResolutionManagement {
     }
 }
 
-include(":composeApp")
+include("sample:composeApp")
+include("multiplatformContact")

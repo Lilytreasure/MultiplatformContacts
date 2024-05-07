@@ -21,7 +21,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "ComposeApp"
+            baseName = "multiplatformContacts"
             isStatic = true
         }
     }
@@ -53,10 +53,8 @@ android {
 
     defaultConfig {
         applicationId = "org.dennis.project"
-        minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
+
     }
     packaging {
         resources {
