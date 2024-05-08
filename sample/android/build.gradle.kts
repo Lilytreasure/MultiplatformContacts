@@ -54,5 +54,5 @@ dependencies {
     implementation(libs.compose.activity)
     implementation(compose.material3)
     implementation(libs.core.ktx)
-    //implementation(project(":sample:shared"))
+    implementation(project(":sample:shared"))
 }

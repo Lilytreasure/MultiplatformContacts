@@ -30,4 +30,5 @@ dependencyResolutionManagement {
 
 include("multiplatformContact")
 include(":sample:android")
+include(":sample:shared")
 
