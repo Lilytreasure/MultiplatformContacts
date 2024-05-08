@@ -28,5 +28,6 @@ dependencyResolutionManagement {
     }
 }
 
-include("sample:composeApp")
 include("multiplatformContact")
+include(":sample:android")
+
