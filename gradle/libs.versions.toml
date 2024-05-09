@@ -17,6 +17,7 @@ kotlin = "1.9.23"
 kotlinVersion = "1.9.21"
 coreKtx = "1.13.1"
 compose-activity = "1.9.0"
+koin = "3.5.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -35,6 +36,11 @@ core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx"
 
 #Activity
 compose-activity = { module = "androidx.activity:activity-compose", version.ref = "compose-activity" }
+
+#Koin
+koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

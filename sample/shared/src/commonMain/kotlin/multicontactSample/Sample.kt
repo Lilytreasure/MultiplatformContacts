@@ -17,7 +17,7 @@ fun Sample() {
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background,
     ) {
-        Column(modifier = Modifier.fillMaxSize()){
+        Column(modifier = Modifier.fillMaxSize()) {
             Text("Sample tests", modifier = Modifier.padding(bottom = 20.dp))
             MultiContacts(modifier = Modifier)
         }

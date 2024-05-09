@@ -30,7 +30,13 @@ kotlin {
         
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
-            implementation(libs.androidx.activity.compose)
+            api(libs.androidx.activity.compose)
+            api(libs.androidx.appcompat)
+            //phone
+            implementation("com.googlecode.libphonenumber:libphonenumber:8.2.0")
+
+            // Koin
+            implementation(libs.koin.android)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -39,6 +45,9 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            //Koin
+            api(libs.koin.core)
+            api(libs.koin.test)
         }
     }
 }
