@@ -56,4 +56,8 @@ dependencies {
     implementation(compose.material3)
     implementation(libs.core.ktx)
     implementation(project(":sample:shared"))
+    implementation(project(":multiplatformContact"))
+    //
+    implementation(libs.koin.android)
+
 }

@@ -48,6 +48,7 @@ kotlin {
             //Koin
             api(libs.koin.core)
             api(libs.koin.test)
+            implementation(libs.koin.compose)
         }
     }
 }
