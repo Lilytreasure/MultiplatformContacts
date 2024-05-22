@@ -79,13 +79,18 @@ fun getPhoneNumberFromUri(context: Context, contactUri: Uri): String? {
     cursor?.use { c ->
         if (c.moveToFirst()) {
             // Get the column index for the phone number
-            val phoneNumberIndex = c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+            val phoneNumberIndex = c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
             if (phoneNumberIndex != -1) {
                 // Check if the column exists in the Cursor
-                return c.getString(phoneNumberIndex)
+                val phoneNumber = c.getString(phoneNumberIndex)
+                if (!phoneNumber.isNullOrBlank()) {
+                    return phoneNumber
+                } else {
+                    Log.e("getPhoneNumberFromUri", "Phone number is null or blank")
+                }
             } else {
                 // Log an error if the column index is not found
-                Log.e("getPhoneNumberFromUri", "Phone number index not found in Cursor")
+                Log.e("getPhoneNumberFromUri", "Phone number index not found in Cursor: $contactUri")
             }
         } else {
             // Log an error if the Cursor is empty
