@@ -1,5 +1,6 @@
 package multiContacts
 
+import android.Manifest
 import android.content.Context
 import android.net.Uri
 import android.os.Build
@@ -9,19 +10,26 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.launch
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import android.content.pm.PackageManager
 
 @Composable
 actual  fun pickLoaded(){
     val context = LocalContext.current
+    val currentActivity: AppCompatActivity = (context as AppCompatActivity)
     val singlePhoneNumberPickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickContact(),
         onResult = { contactUri ->
             contactUri?.let { uri ->
                 // Resolve the contact URI to get the phone number
+                println("Result from picked contacts;;;;;;" + uri.query.toString())
+
                 val phoneNumber = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     getPhoneNumberFromUri(context, uri)
                 } else {
@@ -36,7 +44,31 @@ actual  fun pickLoaded(){
             }
         }
     )
-    Button(onClick = { singlePhoneNumberPickerLauncher.launch() }) {
+    Button(onClick = {
+        if (ContextCompat.checkSelfPermission(
+                currentActivity,
+                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q) {
+                    Manifest.permission.READ_CONTACTS
+                } else {
+                    Manifest.permission.READ_CONTACTS
+                }
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            singlePhoneNumberPickerLauncher.launch()
+
+        } else {
+            ActivityCompat.requestPermissions(
+                currentActivity,
+                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q) {
+                    arrayOf(Manifest.permission.READ_CONTACTS)
+                } else {
+                    arrayOf(Manifest.permission.READ_CONTACTS)
+                },
+                33
+            )
+        }
+
+    }) {
         Text("Pick Contact")
     }
 }
