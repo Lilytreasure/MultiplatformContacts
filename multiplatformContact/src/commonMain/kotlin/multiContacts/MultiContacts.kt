@@ -12,21 +12,18 @@ import androidx.compose.ui.unit.dp
 fun MultiContacts(
     modifier: Modifier = Modifier,
 ) {
-
- pickLoaded()
-
-    Column(){
+    val singleImagePicker = pickLoaded()
+    Column() {
         Button(modifier = Modifier.padding(top = 16.dp),
             onClick = {
-
-        }){
-           Text("Load")
+                singleImagePicker.launch()
+            }) {
+            Text("Run")
         }
-
-
     }
-
-
-
 }
+
+
+
+
 

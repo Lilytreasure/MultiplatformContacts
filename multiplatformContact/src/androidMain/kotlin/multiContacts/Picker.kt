@@ -33,8 +33,9 @@ import androidx.core.content.ContextCompat
 
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
 @Composable
-actual fun pickLoaded() {
+actual fun pickLoaded(): Launcher {
     val context = LocalContext.current
+    val launcherCustom: Launcher?
     val currentActivity: AppCompatActivity = (context as AppCompatActivity)
     val result = remember { mutableStateOf<Bitmap?>(null) }
     val resultContacts = remember { mutableStateOf<Uri?>(null) }
@@ -52,7 +53,15 @@ actual fun pickLoaded() {
         }
     }
     Column() {
-        Button(onClick = {
+        result.value?.let { image ->
+            Image(image.asImageBitmap(), null, modifier = Modifier.fillMaxWidth())
+        }
+        resultContacts.value?.let { text ->
+            phoneNumber?.let { Text(text = it) }
+        }
+    }
+    launcherCustom = remember {
+        Launcher(onLaunch = {
             if (ContextCompat.checkSelfPermission(
                     currentActivity,
                     if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q) {
@@ -75,16 +84,10 @@ actual fun pickLoaded() {
                 )
             }
 
-        }) {
-            Text(text = "Pick Number")
-        }
-        result.value?.let { image ->
-            Image(image.asImageBitmap(), null, modifier = Modifier.fillMaxWidth())
-        }
-        resultContacts.value?.let { text ->
-            phoneNumber?.let { Text(text = it) }
-        }
+
+        })
     }
+    return launcherCustom
 }
 
 fun getPhoneNumberFromUriData(context: Context, uri: Uri): String? {
@@ -114,3 +117,4 @@ fun getPhoneNumberFromUriData(context: Context, uri: Uri): String? {
 
     return phoneNumber
 }
+
