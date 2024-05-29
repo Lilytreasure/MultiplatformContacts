@@ -13,19 +13,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.launch
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Button
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -33,7 +26,7 @@ import androidx.core.content.ContextCompat
 
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
 @Composable
-actual fun pickLoaded(): Launcher {
+actual fun pickMultiplatformContacts(onResult: (String) -> Unit): Launcher {
     val context = LocalContext.current
     val launcherCustom: Launcher?
     val currentActivity: AppCompatActivity = (context as AppCompatActivity)
@@ -52,13 +45,8 @@ actual fun pickLoaded(): Launcher {
             phoneNumber = getPhoneNumberFromUriData(context, uri)
         }
     }
-    Column() {
-        result.value?.let { image ->
-            Image(image.asImageBitmap(), null, modifier = Modifier.fillMaxWidth())
-        }
-        resultContacts.value?.let { text ->
-            phoneNumber?.let { Text(text = it) }
-        }
+    phoneNumber?.let {
+        onResult(it)
     }
     launcherCustom = remember {
         Launcher(onLaunch = {
