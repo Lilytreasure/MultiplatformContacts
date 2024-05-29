@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.database.Cursor
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.provider.ContactsContract
@@ -30,11 +29,7 @@ actual fun pickMultiplatformContacts(onResult: (String) -> Unit): Launcher {
     val context = LocalContext.current
     val launcherCustom: Launcher?
     val currentActivity: AppCompatActivity = (context as AppCompatActivity)
-    val result = remember { mutableStateOf<Bitmap?>(null) }
     val resultContacts = remember { mutableStateOf<Uri?>(null) }
-    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.TakePicturePreview()) {
-        result.value = it
-    }
     val launcherContacts =
         rememberLauncherForActivityResult(ActivityResultContracts.PickContact()) {
             resultContacts.value = it
@@ -71,8 +66,6 @@ actual fun pickMultiplatformContacts(onResult: (String) -> Unit): Launcher {
                     33
                 )
             }
-
-
         })
     }
     return launcherCustom
@@ -102,7 +95,6 @@ fun getPhoneNumberFromUriData(context: Context, uri: Uri): String? {
             }
         }
     }
-
     return phoneNumber
 }
 
