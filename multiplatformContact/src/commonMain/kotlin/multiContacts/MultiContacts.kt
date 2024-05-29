@@ -19,7 +19,6 @@ fun MultiContacts(
         Button(modifier = Modifier.padding(top = 16.dp),
             onClick = {
 
-
         }){
            Text("Load")
         }
