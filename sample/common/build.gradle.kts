@@ -1,4 +1,4 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -15,12 +15,19 @@ kotlin {
         }
     }
 
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-    
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "Common"
+            isStatic = true
+        }
+    }
+
     sourceSets {
-        
+
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             api(libs.androidx.activity.compose)
@@ -32,10 +39,12 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
-            implementation(compose.material)
+            implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation(project(":multiplatformContact"))
+
         }
     }
 }
@@ -49,8 +58,6 @@ android {
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
-
-  
 
     }
     packaging {
@@ -71,4 +78,3 @@ android {
         debugImplementation(libs.compose.ui.tooling)
     }
 }
-

@@ -1,11 +1,11 @@
-import UIKit
+
 import SwiftUI
-import MultiplatformContacts
+import Common
 
 struct ComposeView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
-        MainViewControllerKt.MainViewController()
-    }
+           return Main_iosKt.MainViewController()
+       }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
