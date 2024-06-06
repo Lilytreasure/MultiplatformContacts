@@ -10,28 +10,28 @@ import platform.ContactsUI.CNContactPickerViewController
 import platform.UIKit.UIApplication
 import platform.darwin.NSObject
 
+typealias ContactPickedCallback = (String) -> Unit
 @Composable
-actual fun pickMultiplatformContacts(onResult: (String) -> Unit): Launcher {
-    val launcherCustom: Launcher?
-    //Todo--Ios contacts Picker Implementation
-    val picker = CNContactPickerViewController()
-    picker.delegate = object : NSObject(), CNContactPickerDelegateProtocol {
-        override fun contactPicker(picker: CNContactPickerViewController, didSelectContact: CNContact) {
-            val fullName = CNContactFormatter.stringFromContact(didSelectContact, CNContactFormatterStyle.CNContactFormatterStyleFullName)
-            //onContactPicked(fullName ?: "No Name")
-        }
-    }
-    launcherCustom = remember {
+actual fun pickMultiplatformContacts(onResult: ContactPickedCallback): Launcher {
+    val launcherCustom = remember {
         Launcher(onLaunch = {
+            val picker = CNContactPickerViewController()
+            picker.delegate = object : NSObject(), CNContactPickerDelegateProtocol {
+                override fun contactPicker(picker: CNContactPickerViewController, didSelectContact: CNContact) {
+                    val fullName = CNContactFormatter.stringFromContact(didSelectContact, CNContactFormatterStyle.CNContactFormatterStyleFullName)
+                    onResult(fullName ?: "No Name")
+                }
+                override fun contactPickerDidCancel(picker: CNContactPickerViewController) {
+                    onResult("")
+                }
+            }
             UIApplication.sharedApplication.keyWindow?.rootViewController?.presentViewController(
                 picker,
                 true,
                 null,
             )
-
         })
     }
-
     return launcherCustom
 }
 
