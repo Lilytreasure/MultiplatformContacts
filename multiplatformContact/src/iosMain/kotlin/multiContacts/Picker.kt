@@ -3,14 +3,13 @@ package multiContacts
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import platform.Contacts.CNContact
-import platform.Contacts.CNContactFormatter
-import platform.Contacts.CNContactFormatterStyle
 import platform.ContactsUI.CNContactPickerDelegateProtocol
 import platform.ContactsUI.CNContactPickerViewController
 import platform.UIKit.UIApplication
 import platform.darwin.NSObject
 
 typealias ContactPickedCallback = (String) -> Unit
+
 @Composable
 actual fun pickMultiplatformContacts(onResult: ContactPickedCallback): Launcher {
     val launcherCustom = remember {
@@ -18,8 +17,9 @@ actual fun pickMultiplatformContacts(onResult: ContactPickedCallback): Launcher 
             val picker = CNContactPickerViewController()
             picker.delegate = object : NSObject(), CNContactPickerDelegateProtocol {
                 override fun contactPicker(picker: CNContactPickerViewController, didSelectContact: CNContact) {
-                    val fullName = CNContactFormatter.stringFromContact(didSelectContact, CNContactFormatterStyle.CNContactFormatterStyleFullName)
-                    onResult(fullName ?: "No Name")
+                    val phoneNumber = didSelectContact.phoneNumbers.firstOrNull()?.toString()
+                    val phoneNumberExTracted = phoneNumber?.let { extractPhoneNumber(it) }
+                    onResult(phoneNumberExTracted ?: "No Phone Number")
                 }
                 override fun contactPickerDidCancel(picker: CNContactPickerViewController) {
                     onResult("")
@@ -33,5 +33,10 @@ actual fun pickMultiplatformContacts(onResult: ContactPickedCallback): Launcher 
         })
     }
     return launcherCustom
+}
+fun extractPhoneNumber(cnlabeledValue: String): String? {
+    val regex = Regex("stringValue=([^,]+)")
+    val matchResult = regex.find(cnlabeledValue)
+    return matchResult?.groupValues?.get(1)
 }
 
