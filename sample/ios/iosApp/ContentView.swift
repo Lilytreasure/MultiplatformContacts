@@ -1,5 +1,5 @@
 
-import SwiftUI 
+import SwiftUI
 import Common
 
 struct ComposeView: UIViewControllerRepresentable {

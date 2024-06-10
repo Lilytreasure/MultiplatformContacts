@@ -57,7 +57,5 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(project(":sample:common"))
     implementation(project(":multiplatformContact"))
-    //
-    implementation(libs.koin.android)
 
 }
