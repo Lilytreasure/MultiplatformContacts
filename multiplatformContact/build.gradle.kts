@@ -64,7 +64,7 @@ mavenPublishing {
 
     // Configure POM metadata for the published artifact
     pom {
-        name.set("Message Bar KMP")
+        name.set("MultiplatformContacts")
         description.set(
             "Kotlin Multiplatform library for Compose Multiplatform, " +
                     "designed for seamless integration of an contacts picker feature in iOS " +
