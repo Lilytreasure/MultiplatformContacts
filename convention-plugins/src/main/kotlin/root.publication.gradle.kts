@@ -1,11 +1,13 @@
 
+
+
 plugins {
     id("io.github.gradle-nexus.publish-plugin")
 }
 
 allprojects {
-    group = "io.github.dennis"
-    version = "0.5.2"
+    group = "io.github.lilytreasure"
+    version = "0.0.1"
 }
 
 nexusPublishing {
@@ -15,9 +17,9 @@ nexusPublishing {
         sonatype {
             nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
             snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-            stagingProfileId.set(System.getenv("OSSRH_STAGING_PROFILE_ID"))
-            username.set(System.getenv("OSSRH_USERNAME"))
-            password.set(System.getenv("OSSRH_PASSWORD"))
         }
     }
 }
+
+
+

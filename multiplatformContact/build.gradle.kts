@@ -1,28 +1,29 @@
+import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsCompose)
-    id("module.publication")
+    id("com.vanniktech.maven.publish") version "0.28.0"
 }
 
 kotlin {
     androidTarget {
-        publishLibraryVariants("release")
         compilations.all {
             kotlinOptions {
                 jvmTarget = "17"
             }
         }
+        publishLibraryVariants("release", "debug")
     }
 
     iosX64()
     iosArm64()
     iosSimulatorArm64()
-    
+
     sourceSets {
-        
+
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             api(libs.androidx.activity.compose)
@@ -43,32 +44,63 @@ kotlin {
 }
 
 android {
-    namespace = "org.dennis.project"
+    namespace = "io.github.lilytreasure"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
-
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    sourceSets["main"].res.srcDirs("src/androidMain/res")
-    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
-
     defaultConfig {
-
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-        }
+        minSdk = libs.versions.android.minSdk.get().toInt()
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    dependencies {
-        debugImplementation(libs.compose.ui.tooling)
-    }
 }
+
+mavenPublishing {
+    coordinates(
+        groupId = "io.github.lilytreasure",
+        artifactId = "multiplatformContacts",
+        version = "1.0.0"
+    )
+
+    // Configure POM metadata for the published artifact
+    pom {
+        name.set("MultiplatformContacts")
+        description.set(
+            "Kotlin Multiplatform library for Compose Multiplatform, " +
+                    "designed for seamless integration of an contacts picker feature in iOS " +
+                    "and Android applications.",
+        )
+        inceptionYear.set("2024")
+        url.set("hhttps://github.com/Lilytreasure/MultiplatformContacts")
+
+        licenses {
+            license {
+                name.set("MIT")
+                url.set("https://opensource.org/licenses/MIT")
+            }
+        }
+
+        // Specify developers information
+        developers {
+            developer {
+                id.set("dennis")
+                name.set("dennis")
+                email.set("lilyngure@gmail.com")
+            }
+        }
+
+        // Specify SCM information
+        scm {
+            connection.set("https://github.com/Lilytreasure/MultiplatformContacts.git")
+            url.set("https://github.com/Lilytreasure/MultiplatformContacts")
+        }
+    }
+
+    // Configure publishing to Maven Central
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+
+    // Enable GPG signing for all publications
+    signAllPublications()
+}
+
 
