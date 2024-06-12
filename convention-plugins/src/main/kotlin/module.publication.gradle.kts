@@ -3,6 +3,7 @@ import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.tasks.bundling.Jar
 import org.gradle.kotlin.dsl.`maven-publish`
 
+
 plugins {
     `maven-publish`
     signing
@@ -57,12 +58,9 @@ publishing {
 signing {
     if (project.hasProperty("signing.gnupg.keyName")) {
         useGpgCmd()
+        sign(publishing.publications)
     }
-    useInMemoryPgpKeys(
-        System.getenv("OSSRH_GPG_SECRET_KEY"),
-        System.getenv("OSSRH_GPG_SECRET_KEY_PASSWORD"),
-    )
-    sign(publishing.publications)
+
 }
 
 tasks.withType<AbstractPublishToMaven>().configureEach {
