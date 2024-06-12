@@ -10,7 +10,6 @@ plugins {
 
 kotlin {
     androidTarget {
-        publishLibraryVariants("release")
         compilations.all {
             kotlinOptions {
                 jvmTarget = "17"
@@ -45,7 +44,7 @@ kotlin {
 }
 
 android {
-    namespace = "org.dennis.project"
+    namespace = "io.github.lilytreasure"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
