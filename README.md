@@ -7,3 +7,11 @@ commonMain.dependencies {
 }
 ```
 ## Usage
+
+
+```kotlin
+    var phoneNumber by remember { mutableStateOf("") }
+    val multiplatformContactsPicker = pickMultiplatformContacts(onResult = {number->
+        phoneNumber = number
+    })
+```
