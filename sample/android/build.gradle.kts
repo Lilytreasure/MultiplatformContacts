@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.dennis.multicontacts.android.sample"
-        minSdk = 21
+        minSdk = 24
         targetSdk = compileSdk
         versionCode = 1
         versionName = "1.0.0"
