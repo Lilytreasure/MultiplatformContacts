@@ -25,4 +25,14 @@ commonMain.dependencies {
     val multiplatformContactsPicker = pickMultiplatformContacts(onResult = {number->
         phoneNumber = number
     })
+
+  Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+            Button(onClick = {
+                multiplatformContactsPicker.launch()
+            }) {
+                Text("Load contacts")
+            }
+            Text(text = phoneNumber)
+        }
+
 ```
