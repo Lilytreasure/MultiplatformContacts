@@ -8,6 +8,12 @@
 👻 Multiplatform Contacts is a straight forward library used to get  Contacts in Android and iOS.
 </p><br>
 
+### On Android
+
+Add the following on your Manifest file:
+```xml
+  <uses-permission android:name="android.permission.READ_CONTACTS" />
+```
 
 ### Gradle
 
