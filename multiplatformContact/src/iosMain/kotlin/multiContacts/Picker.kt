@@ -8,6 +8,13 @@ import platform.ContactsUI.CNContactPickerViewController
 import platform.UIKit.UIApplication
 import platform.darwin.NSObject
 
+
+
+/**
+ * @param Launcher  used to invoke the contacts picker
+ * @param extractPhoneNumber is used to extract phone number, can be modified to extract phone number data of your choice
+ */
+
 typealias ContactPickedCallback = (String) -> Unit
 
 @Composable

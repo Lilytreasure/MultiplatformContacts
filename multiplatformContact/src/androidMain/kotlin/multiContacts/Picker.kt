@@ -17,6 +17,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 
+/**
+ * @param Launcher  used to invoke the contacts picker
+ * @param getPhoneNumberFromUriData is used to extract phone number  from the uri
+ */
+
 
 @Composable
 actual fun pickMultiplatformContacts(onResult: (String) -> Unit): Launcher {
