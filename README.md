@@ -8,6 +8,19 @@
 👻 Multiplatform Contacts is a straight forward library used to get  Contacts in Android and iOS.
 </p><br>
 
+
+
+
+
+
+
+### sample iOS
+<p align="center">
+<img src="https://github.com/Lilytreasure/MultiplatformContacts/assets/78819932/39de24b2-0ffd-4192-bb18-6c4b3ee12121" width="268"/>
+</p>
+
+
+
 ### On Android
 
 Add the following on your Manifest file:
