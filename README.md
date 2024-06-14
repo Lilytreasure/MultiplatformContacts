@@ -9,12 +9,6 @@
 </p><br>
 
 
-
-
-
-![Screen Recording 2024-06-14 at 12 25 43](https://github.com/Lilytreasure/MultiplatformContacts/assets/78819932/d3150a0d-1578-4c29-9c59-7d8d83f3dd2e)
-
-
 ### sample iOS
 <p align="center">
 <img <img src="https://github.com/Lilytreasure/MultiplatformContacts/assets/78819932/d3150a0d-1578-4c29-9c59-7d8d83f3dd2e.gif?raw=true" width="268"/>
