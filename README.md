@@ -13,8 +13,13 @@
 <p align="center">
 <img <img src="https://github.com/Lilytreasure/MultiplatformContacts/assets/78819932/d3150a0d-1578-4c29-9c59-7d8d83f3dd2e.gif?raw=true" width="268"/>
 </p>
+![Screen Recording 2024-06-14 at 12 49 35](https://github.com/Lilytreasure/MultiplatformContacts/assets/78819932/472d2a66-acca-467a-aefc-b27cbd18b06a)
 
 
+### sample Android
+<p align="center">
+<img <img src="https://github.com/Lilytreasure/MultiplatformContacts/assets/78819932/472d2a66-acca-467a-aefc-b27cbd18b06a.gif?raw=true" width="268"/>
+</p>
 
 ### On Android
 
