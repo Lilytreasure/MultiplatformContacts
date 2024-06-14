@@ -12,11 +12,12 @@
 
 
 
+![Screen Recording 2024-06-14 at 12 25 43](https://github.com/Lilytreasure/MultiplatformContacts/assets/78819932/d3150a0d-1578-4c29-9c59-7d8d83f3dd2e)
 
 
 ### sample iOS
 <p align="center">
-<img src="https://github.com/Lilytreasure/MultiplatformContacts/assets/78819932/39de24b2-0ffd-4192-bb18-6c4b3ee12121" width="268"/>
+<img <img src="https://github.com/Lilytreasure/MultiplatformContacts/assets/78819932/d3150a0d-1578-4c29-9c59-7d8d83f3dd2e.gif?raw=true" width="268"/>
 </p>
 
 
