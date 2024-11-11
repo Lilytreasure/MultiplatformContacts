@@ -28,7 +28,7 @@ kotlin {
             api(libs.androidx.activity.compose)
             api(libs.androidx.appcompat)
             //phone
-            implementation("com.googlecode.libphonenumber:libphonenumber:8.2.0")
+            implementation(libs.libphonenumber)
 
         }
         commonMain.dependencies {

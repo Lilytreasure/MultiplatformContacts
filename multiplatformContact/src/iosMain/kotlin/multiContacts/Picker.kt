@@ -18,7 +18,10 @@ import platform.darwin.NSObject
 typealias ContactPickedCallback = (String) -> Unit
 
 @Composable
-actual fun pickMultiplatformContacts(onResult: ContactPickedCallback): Launcher {
+actual fun pickMultiplatformContacts(
+    countryISOCode: String,
+    onResult: ContactPickedCallback
+): Launcher {
     val launcherCustom = remember {
         Launcher(onLaunch = {
             val picker = CNContactPickerViewController()
