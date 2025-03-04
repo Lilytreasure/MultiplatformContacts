@@ -12,7 +12,7 @@ PODS:
 
 DEPENDENCIES:
   - libPhoneNumber-iOS (~> 0.8)
-  - multiplatformContact (from `/Users/mac/Downloads/MultiplatformContactsLib/multiplatformContact/multiplatformContact.podspec`)
+  - multiplatformContact (from `../multiplatformContact`)
   - PhoneNumberKit (~> 3.7)
 
 SPEC REPOS:
@@ -22,13 +22,13 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   multiplatformContact:
-    :path: "/Users/mac/Downloads/MultiplatformContactsLib/multiplatformContact/multiplatformContact.podspec"
+    :path: "../multiplatformContact"
 
 SPEC CHECKSUMS:
   libPhoneNumber-iOS: 6ad6dd425bea574d44885cc673b4b78ed7e9a355
   multiplatformContact: df498eb245ce2ee8c1d1d42a79cecec94792b46f
   PhoneNumberKit: e8b8eb321385c969f5f350e0ef4104c38eebf2d0
 
-PODFILE CHECKSUM: 4617581be2b6de64b8fb493bd5fad06b7c2c53aa
+PODFILE CHECKSUM: c527826ef5d749b600c301693a20079a1b559161
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

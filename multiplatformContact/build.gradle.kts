@@ -34,12 +34,10 @@ kotlin {
         // Must define the pods that are in the Podfile (Is this just the way it works?)
         pod("PhoneNumberKit") {
             version ="3.7"
-            //    version = "7.4.0" // for GoogleMapsUtils 4.2.2 (doesn't build for some c-interop reason, waiting for 5.0.0)
             extraOpts += listOf("-compiler-option", "-fmodules")
         }
         pod("libPhoneNumber-iOS") {
             version ="0.8"
-            //    version = "7.4.0" // for GoogleMapsUtils 4.2.2 (doesn't build for some c-interop reason, waiting for 5.0.0)
             extraOpts += listOf("-compiler-option", "-fmodules")
         }
     }
