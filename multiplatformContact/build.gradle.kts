@@ -32,14 +32,14 @@ kotlin {
             isStatic = true
         }
         // Must define the pods that are in the Podfile (Is this just the way it works?)
-        pod("PhoneNumberKit") {
-            version ="3.7"
-            extraOpts += listOf("-compiler-option", "-fmodules")
-        }
-        pod("libPhoneNumber-iOS") {
-            version ="0.8"
-            extraOpts += listOf("-compiler-option", "-fmodules")
-        }
+//        pod("PhoneNumberKit") {
+//            version ="3.7"
+//            extraOpts += listOf("-compiler-option", "-fmodules")
+//        }
+//        pod("libPhoneNumber-iOS") {
+//            version ="0.8"
+//            extraOpts += listOf("-compiler-option", "-fmodules")
+//        }
     }
 
     sourceSets {

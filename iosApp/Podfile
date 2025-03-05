@@ -5,9 +5,9 @@ target 'iosApp' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
     platform :ios, '14.0'  # ios.deploymentTarget
-      pod 'PhoneNumberKit', '~> 3.7'
-
-        pod 'libPhoneNumber-iOS', '~> 0.8'
+#       pod 'PhoneNumberKit', '~> 3.7'
+#
+#         pod 'libPhoneNumber-iOS', '~> 0.8'
 
     pod 'multiplatformContact', :path => '../multiplatformContact'
   # Pods for iosApp

@@ -2,9 +2,6 @@ package multiContacts
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import cocoapods.libPhoneNumber_iOS.NBEPhoneNumberFormatE164
-import cocoapods.libPhoneNumber_iOS.NBPhoneNumber
-import cocoapods.libPhoneNumber_iOS.NBPhoneNumberUtil
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Contacts.CNContact
 import platform.ContactsUI.CNContactPickerDelegateProtocol
@@ -27,20 +24,20 @@ actual fun pickMultiplatformContacts(
     countryISOCode: String,
     onResult: ContactPickedCallback
 ): Launcher {
-    val phoneUtil = NBPhoneNumberUtil()
-    try {
-        val parsedNumber: NBPhoneNumber? = phoneUtil.parse("0003455", "KE",null)
-        // Check if parsedNumber is null before formatting
-        if (parsedNumber != null) {
-            val formattedString: String? = phoneUtil.format(parsedNumber, NBEPhoneNumberFormatE164,null)
-            println("Formatted phone number: $formattedString")
-        } else {
-            println("Parsed number is null.")
-        }
-
-    } catch (e: Exception) {
-        println("Exception occurred: $e")
-    }
+//    val phoneUtil = NBPhoneNumberUtil()
+//    try {
+//        val parsedNumber: NBPhoneNumber? = phoneUtil.parse("0003455", "KE",null)
+//        // Check if parsedNumber is null before formatting
+//        if (parsedNumber != null) {
+//            val formattedString: String? = phoneUtil.format(parsedNumber, NBEPhoneNumberFormatE164,null)
+//            println("Formatted phone number: $formattedString")
+//        } else {
+//            println("Parsed number is null.")
+//        }
+//
+//    } catch (e: Exception) {
+//        println("Exception occurred: $e")
+//    }
 
     val launcherCustom = remember {
         Launcher(onLaunch = {

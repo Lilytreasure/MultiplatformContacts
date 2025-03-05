@@ -13,14 +13,6 @@
   "platforms": {
     "ios": "14.0"
   },
-  "dependencies": {
-    "PhoneNumberKit": [
-      "3.7"
-    ],
-    "libPhoneNumber-iOS": [
-      "0.8"
-    ]
-  },
   "pod_target_xcconfig": {
     "KOTLIN_PROJECT_PATH": ":multiplatformContact",
     "PRODUCT_MODULE_NAME": "shared"
