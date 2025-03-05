@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsCompose)
+    kotlin("native.cocoapods")
     id("com.vanniktech.maven.publish") version "0.28.0"
 }
 
@@ -20,6 +21,26 @@ kotlin {
     iosX64()
     iosArm64()
     iosSimulatorArm64()
+    cocoapods {
+        version = "1.0.0"
+        summary = "Some description for the Shared Module"
+        homepage = "Link to the Shared Module homepage"
+        ios.deploymentTarget = "14.0"
+        podfile = project.file("../iosApp/Podfile") // why doesn't it load the cocoapods from the iosApp podfile?
+        framework {
+            baseName = "shared"
+            isStatic = true
+        }
+        // Must define the pods that are in the Podfile (Is this just the way it works?)
+//        pod("PhoneNumberKit") {
+//            version ="3.7"
+//            extraOpts += listOf("-compiler-option", "-fmodules")
+//        }
+//        pod("libPhoneNumber-iOS") {
+//            version ="0.8"
+//            extraOpts += listOf("-compiler-option", "-fmodules")
+//        }
+    }
 
     sourceSets {
 
