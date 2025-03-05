@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     kotlin("native.cocoapods")
     id("com.vanniktech.maven.publish") version "0.28.0"
+    alias(libs.plugins.compose.compiler)
 }
 
 kotlin {
