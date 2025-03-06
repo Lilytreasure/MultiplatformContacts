@@ -1,5 +1,6 @@
-package = io.github.lilytreasure
+
 language = Objective-C
+package = io.github.lilytreasure
 headers = ContactsHelper.h
 compilerOpts = -target arm64-apple-ios14.0
-linkerOpts = -framework Foundation
+linkerOpts = -framework ContactsUI -framework UIKit -framework Foundation

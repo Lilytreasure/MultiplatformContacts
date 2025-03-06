@@ -25,27 +25,32 @@ actual fun pickMultiplatformContacts(
     countryISOCode: String,
     onResult: ContactPickedCallback
 ): Launcher {
-    //Contacts helper
-    val contacts=ContactsHelper()
-    contacts.loadContacts()
+    val contactsHelper = ContactsHelper()
+
     val launcherCustom = remember {
         Launcher(onLaunch = {
-            val picker = CNContactPickerViewController()
-            picker.delegate = object : NSObject(), CNContactPickerDelegateProtocol {
-                override fun contactPicker(picker: CNContactPickerViewController, didSelectContact: CNContact) {
-                    val phoneNumber = didSelectContact.phoneNumbers.firstOrNull()?.toString()
-                    val phoneNumberExTracted = phoneNumber?.let { extractPhoneNumber(it) }
-                    onResult(phoneNumberExTracted ?: "No Phone Number")
-                }
-                override fun contactPickerDidCancel(picker: CNContactPickerViewController) {
-                    onResult("")
-                }
+            contactsHelper.loadContactsWithCallback { phoneNumber ->
+                println("Selected Phone Number: $phoneNumber")
+                onResult(phoneNumber ?:"Error fetching phone Number")
             }
-            UIApplication.sharedApplication.keyWindow?.rootViewController?.presentViewController(
-                picker,
-                true,
-                null,
-            )
+
+            //Old implementation
+//            val picker = CNContactPickerViewController()
+//            picker.delegate = object : NSObject(), CNContactPickerDelegateProtocol {
+//                override fun contactPicker(picker: CNContactPickerViewController, didSelectContact: CNContact) {
+//                    val phoneNumber = didSelectContact.phoneNumbers.firstOrNull()?.toString()
+//                    val phoneNumberExTracted = phoneNumber?.let { extractPhoneNumber(it) }
+//                    onResult(phoneNumberExTracted ?: "No Phone Number")
+//                }
+//                override fun contactPickerDidCancel(picker: CNContactPickerViewController) {
+//                    onResult("")
+//                }
+//            }
+//            UIApplication.sharedApplication.keyWindow?.rootViewController?.presentViewController(
+//                picker,
+//                true,
+//                null,
+//            )
         })
     }
     return launcherCustom
