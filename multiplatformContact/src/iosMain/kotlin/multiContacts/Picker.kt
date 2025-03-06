@@ -2,6 +2,7 @@ package multiContacts
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Contacts.CNContact
 import platform.ContactsUI.CNContactPickerDelegateProtocol
 import platform.ContactsUI.CNContactPickerViewController
@@ -22,6 +23,9 @@ actual fun pickMultiplatformContacts(
     countryISOCode: String,
     onResult: ContactPickedCallback
 ): Launcher {
+    //Contacts helper
+//    val contacts=ContactsHelper()
+//    contacts.loadContacts()
     val launcherCustom = remember {
         Launcher(onLaunch = {
             val picker = CNContactPickerViewController()

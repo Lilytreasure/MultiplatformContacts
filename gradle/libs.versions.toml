@@ -17,6 +17,7 @@ coreKtx = "1.13.1"
 compose-activity = "1.9.0"
 libphonenumber = "8.2.0"
 nexus-publish = "2.0.0"
+swiftklib = "0.6.3"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -46,3 +47,4 @@ jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+swiftKlib = { id = "io.github.ttypic.swiftklib", version.ref = "swiftklib" }
