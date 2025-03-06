@@ -7,8 +7,16 @@ plugins {
     kotlin("native.cocoapods")
     id("com.vanniktech.maven.publish") version "0.28.0"
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.swiftKlib)
 }
 
+swiftklib {
+    create("ContactsHelper") {
+        path = file("/Users/admin/StudioProjects/MultiplatformContacts/iosApp/iosApp/contacts")
+        packageName("io.github.lilytreasure")
+        minIos = 14
+    }
+}
 kotlin {
     androidTarget {
         compilations.all {
@@ -19,21 +27,29 @@ kotlin {
         publishLibraryVariants("release", "debug")
     }
 
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
+    val iosTargets = listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    )
+
+//    iosTargets.forEach { target ->
+//        target.compilations["main"].cinterops {
+//            create("ContactsHelper")
+//        }
+//    }
+
     cocoapods {
         version = "1.0.0"
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
         ios.deploymentTarget = "14.0"
-        podfile = project.file("../iosApp/Podfile") // why doesn't it load the cocoapods from the iosApp podfile?
+        podfile = project.file("../iosApp/Podfile") // ✅ This will load your Podfile correctly
         framework {
             baseName = "shared"
             isStatic = true
         }
     }
-
     sourceSets {
 
         androidMain.dependencies {
