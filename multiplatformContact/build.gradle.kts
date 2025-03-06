@@ -33,11 +33,14 @@ kotlin {
         iosSimulatorArm64()
     )
 
-//    iosTargets.forEach { target ->
-//        target.compilations["main"].cinterops {
-//            create("ContactsHelper")
-//        }
-//    }
+    iosTargets.forEach { target ->
+        target.compilations["main"].cinterops {
+            create("ContactsHelper") {
+                defFile(project.file("src/iosMain/cinterop/ContactsHelper.def"))
+                packageName("io.github.lilytreasure")
+            }
+        }
+    }
 
     cocoapods {
         version = "1.0.0"
